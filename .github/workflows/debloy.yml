@@ -41,6 +41,7 @@ jobs:
 
             # Generar el archivo .env "al vuelo"
             # SOLO incluimos las 3 variables que tu compose necesita ahora
+
             echo "Generando configuración..."
             echo "POSTGRES_ROOT_USER=${{ secrets.POSTGRES_ROOT_USER }}" > .env
             echo "POSTGRES_ROOT_PASSWORD=${{ secrets.POSTGRES_ROOT_PASSWORD }}" >> .env
