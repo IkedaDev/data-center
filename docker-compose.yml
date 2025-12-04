@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  postgres-core:
+    image: postgres:15-alpine
+    container_name: postgres_core_server
+    restart: always
+    environment:
+      # Credenciales ROOT (Necesarias para que Postgres arranque)
+      POSTGRES_USER: ${POSTGRES_ROOT_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_ROOT_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - "${DB_PORT}:5432"
+    networks:
+      - main_network
+
+networks:
+  main_network:
+    name: infra_network
+    driver: bridge
