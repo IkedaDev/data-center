@@ -17,7 +17,21 @@ services:
       - "${POSTGRES_DB_PORT}:5432"
     networks:
       - main_network
-
+  mongo-core:
+    image: mongo:6.0
+    container_name: mongo_core_server
+    restart: always
+    environment:
+      # Usuario root para administrar Mongo
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+    volumes:
+      # ESTO asegura la persistencia: los datos viven en tu Raspberry, no en el contenedor
+      - ./mongo-data:/data/db
+    ports:
+      - "${MONGO_DB_PORT}:27017"
+    networks:
+      - main_network
 networks:
   main_network:
     name: infra_network

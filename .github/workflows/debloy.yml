@@ -47,6 +47,10 @@ jobs:
             echo "POSTGRES_ROOT_PASSWORD=${{ secrets.POSTGRES_ROOT_PASSWORD }}" >> .env
             echo "POSTGRES_DB_PORT=${{ secrets.POSTGRES_DB_PORT }}" >> .env
 
+            echo "MONGO_ROOT_USER=${{ secrets.MONGO_ROOT_USER }}" >> .env
+            echo "MONGO_ROOT_PASSWORD=${{ secrets.MONGO_ROOT_PASSWORD }}" >> .env
+            echo "MONGO_DB_PORT=${{ secrets.MONGO_DB_PORT }}" >> .env
+
             # Levantar el servicio
             # --remove-orphans es importante para borrar cosas viejas si cambiaste nombres
             docker compose down --remove-orphans || true
