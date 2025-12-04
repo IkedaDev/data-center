@@ -48,6 +48,7 @@ jobs:
 
             # Levantar el servicio
             # --remove-orphans es importante para borrar cosas viejas si cambiaste nombres
-            docker-compose up -d --remove-orphans
+            docker compose down --remove-orphans || true
+            docker compose up -d
 
             echo "✅ Despliegue de Base de Datos completado."
