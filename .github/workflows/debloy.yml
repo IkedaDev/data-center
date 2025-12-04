@@ -6,7 +6,7 @@ on:
     # Se ejecuta si cambias el compose o este mismo workflow
     paths:
       - "docker-compose.yml"
-      - ".github/workflows/deploy-db.yml"
+      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 jobs:
