@@ -16,7 +16,7 @@ services:
     ports:
       - "${POSTGRES_DB_PORT}:5432"
     networks:
-      - main_network
+      - infra_network
   mongo-core:
     image: mongo:6.0
     container_name: mongo_core_server
@@ -30,8 +30,8 @@ services:
     ports:
       - "${MONGO_DB_PORT}:27017"
     networks:
-      - main_network
+      - infra_network
 networks:
-  main_network:
+  infra_network:
     name: infra_network
     driver: bridge
