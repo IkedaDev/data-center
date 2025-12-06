@@ -21,13 +21,15 @@ services:
     image: mongo:6.0
     container_name: mongo_core_server
     restart: always
-    command: ["--replSet", "rs0", "--bind_ip_all"]
+    command:
+      ["--replSet", "rs0", "--bind_ip_all", "--keyFile", "/etc/mongo-keyfile"]
     environment:
       # Usuario root para administrar Mongo
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
     volumes:
       - ./mongo-data:/data/db
+      - ./mongo-keyfile:/etc/mongo-keyfile
     ports:
       - "${MONGO_DB_PORT}:27017"
     networks:
