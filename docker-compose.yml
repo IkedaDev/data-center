@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: ${POSTGRES_ROOT_USER}
       POSTGRES_PASSWORD: ${POSTGRES_ROOT_PASSWORD}
       PGDATA: /var/lib/postgresql/data/pgdata
-
+      TZ: America/Santiago
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -27,6 +27,7 @@ services:
       # Usuario root para administrar Mongo
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+      TZ: America/Santiago
     volumes:
       - mongo_data:/data/db
       - ./mongo-keyfile:/etc/mongo-keyfile
